@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: Feign-Client-App
+
+server:
+  port: 8012
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8010/eureka
