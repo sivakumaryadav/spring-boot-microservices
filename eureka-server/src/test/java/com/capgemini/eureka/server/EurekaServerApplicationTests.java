@@ -1,4 +1,4 @@
-package com.capgemini.eureka.server.eurekaserver;
+package com.capgemini.eureka.server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
