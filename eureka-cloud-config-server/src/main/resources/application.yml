@@ -1,0 +1,21 @@
+server:
+  port: 8013
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8010/eureka
+
+spring:
+  application:
+    name: cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/sivakumaryadav/app-cloud-config.git
+          username: sivakumarthota50@gmail.com
+          password: Sudeep@7007
+          #default-label: true
+          skipSslValidation: true
+          clone-on-start: true

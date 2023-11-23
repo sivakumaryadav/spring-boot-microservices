@@ -1,0 +1,15 @@
+server:
+  port: 9080
+
+spring:
+  application:
+    name: spring-kafka-producer-app
+  kafka:
+    producer:
+      bootstrap-servers:
+        - localhost: 9092
+
+
+producer:
+  kafka:
+    topic: employee-topic
