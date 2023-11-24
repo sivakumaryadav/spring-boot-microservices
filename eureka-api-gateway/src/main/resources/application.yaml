@@ -1,0 +1,32 @@
+eureka:
+  client:
+    #register-with-eureka: true
+    #fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8010/eureka
+  instance:
+    hostname: localhost
+spring:
+  application:
+    name: Eureka-Api-Gateway
+  cloud:
+    gateway:
+      routes:
+        - id: Eureka-Discovery-Client
+          uri: lb://Eureka-Discovery-Client
+          predicates:
+            - Path=/employee/**
+        - id: Feign-Client-App
+          uri: lb://Feign-Client-App
+          predicates:
+            - Path=/feign-client/**
+
+server:
+  port: 9096
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

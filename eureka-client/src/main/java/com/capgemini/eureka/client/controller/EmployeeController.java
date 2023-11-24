@@ -1,16 +1,17 @@
 package com.capgemini.eureka.client.controller;
 
 import com.capgemini.eureka.client.model.Employee;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -40,6 +41,7 @@ public class EmployeeController {
 
     @GetMapping("/findAllEmployees")
     public List<Employee> findAllEmployees() {
+        log.info("employee findAll Employee Service invoked.");
         return getEmployees();
     }
 }
