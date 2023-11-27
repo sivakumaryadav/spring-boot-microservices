@@ -1,0 +1,63 @@
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    #register-with-eureka: true
+    #fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8010/eureka
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: Eureka-Api-Gateway
+  cloud:
+    gateway:
+      routes:
+        - id: Eureka-Discovery-Client
+          uri: lb://Eureka-Discovery-Client
+          predicates:
+            - Path=/employee/**
+        - id: Feign-Client-App
+          uri: lb://Feign-Client-App
+          predicates:
+            - Path=/feign-client/**
+        - id: Eureka-Api-Gateway
+          uri: lb://Eureka-Api-Gateway
+          predicates:
+            - Path=/user/**
+  datasource:
+    url: jdbc:h2:mem:mydb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    initialization-mode: always
+    username: sa
+    password: password
+    #driver-class-name: org.h2.Driver
+    generate-unique-name: false
+    jpa:
+      hibernate:
+        ddl-auto: update #create-drop
+      database-platform: org.hibernate.dialect.H2Dialect
+      defer-datasource-initialization: true
+      show-sql: true
+    h2:
+      console:
+        enabled: true
+        path: /h2-console # http://localhost:9096/h2-console
+        settings:
+          trace: false
+          web-allow-others: false
+server:
+  port: 9096
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    org:
+      springframework:
+        jpa: DEBUG

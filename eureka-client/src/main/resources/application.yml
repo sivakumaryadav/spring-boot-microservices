@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: Eureka-Discovery-Client
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update #create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console # http://localhost:8011/h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+
+server:
+  port: 8011
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: health, info, env, beans, loggers
+        exclude:
+          - threaddump
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://localhost:8010/eureka
+
+application:
+  security:
+    jwt:
+      secret-key: my-32-character-ultra-secure-and-ultra-long-secret
+      expiration: '1000 * 60 * 60 * 10'
+      refresh-token:
+        expiration: '1000 * 60 * 60 * 10'
