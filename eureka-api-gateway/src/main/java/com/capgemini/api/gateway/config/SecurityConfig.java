@@ -48,7 +48,7 @@ public class SecurityConfig {
                                 .requestMatchers("/employee/**", "/feign-client/**").authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
-                
+
                 .build();
     }
 

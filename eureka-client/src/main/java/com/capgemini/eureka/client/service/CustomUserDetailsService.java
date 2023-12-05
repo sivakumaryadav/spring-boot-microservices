@@ -1,5 +1,6 @@
 package com.capgemini.eureka.client.service;
 
+
 import com.capgemini.eureka.client.model.User;
 import com.capgemini.eureka.client.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

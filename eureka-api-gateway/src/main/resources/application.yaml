@@ -10,6 +10,8 @@ eureka:
 spring:
   main:
     allow-bean-definition-overriding: true
+  instance:
+    hostname: localhost
   application:
     name: Eureka-Api-Gateway
   cloud:
@@ -47,6 +49,7 @@ spring:
         settings:
           trace: false
           web-allow-others: false
+
 server:
   port: 9096
 
@@ -61,3 +64,4 @@ logging:
     org:
       springframework:
         jpa: DEBUG
+
